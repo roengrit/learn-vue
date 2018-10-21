@@ -1,0 +1,28 @@
+<!DOCTYPE HTML> 
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<div id="app">
+ <input type="number" v-model.number="x"> 
+ <input type="number" v-model.number="y">
+   <br/>
+  {{ result }}
+  <br/>
+  {{ lastupdate }}
+</div>
+<script>
+var app = new Vue({
+  el: '#app',
+  data: {
+    x:0,
+    y:0
+  },
+  computed:{
+    result(){
+      return  this.x + this.y
+    },
+	lastupdate(){
+	this.result
+	 return new Date()
+	}
+  }
+})
+</script>	
