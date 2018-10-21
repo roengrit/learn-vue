@@ -8,19 +8,35 @@
   <br>
   <p v-show="result>0" v-text="lastupdate">  </p>
   <br>
-  <p v-if="result>0" v-html="result + 10 "> </p>
-  <p v-else  v-html="No data"> </p>
+  <p v-if="result>0" v-html="result"> </p>
+  <p v-else  v-html="'No data'"> </p>
+  <p v-for="x in list"  v-html="x"> </p>
+  <button-counter v-bind:name="'I,m '"></button-counter>
+  <button v-on:click="Hey">Hey</button>
 </div>
 <script>
 
 /// v-if : delete element
 /// v-show : display none
 
+Vue.component('button-counter', {
+  props:{
+  name : ""
+  },
+  data: function () {
+    return {
+      count: 0
+    }
+  },
+  template: '<button v-on:click="count++"> {{name}}You clicked me {{ count }} times.</button>'
+})
+
 var app = new Vue({
-  el: '#app',
+  el: '#app',   
   data: {
     x:0,
-    y:0
+    y:0,
+	list:[0,1,2,3,4,5]
   },
   computed:{
     result(){
@@ -31,6 +47,11 @@ var app = new Vue({
 	this.result
 	 return new Date()
 	}
+  },
+  methods:{
+  Hey(){
+  alert('A')
+  }
   }
 })
 </script>	
