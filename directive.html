@@ -6,11 +6,16 @@
    <br>
   <p>{{ result }}</p>
   <br>
-  <p v-text="lastupdate">  </p>
+  <p v-show="result>0" v-text="lastupdate">  </p>
   <br>
-  <p v-html="result + 10 "> </p>
+  <p v-if="result>0" v-html="result + 10 "> </p>
+  <p v-else  v-html="No data"> </p>
 </div>
 <script>
+
+/// v-if : delete element
+/// v-show : display none
+
 var app = new Vue({
   el: '#app',
   data: {
